@@ -26,7 +26,7 @@
                 </div>
               </div>
 
-              <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" autocomplete="off">
+              <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" autocomplete="off"> <!--ngSubmit="login", the login method is in the nav component-->
                 <input 
                 name="username"
                 [(ngModel)]="model.username"

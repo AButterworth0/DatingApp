@@ -7,9 +7,9 @@ using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    [ApiController] //This signifies that this class is a controller
+    [Route("[controller]")]  //[controller] is a place holder for WeatherForcast
+    public class WeatherForecastController : ControllerBase //WeatherForcast is placed inside the square brackets for the route - [Route("[WeatherForcast]")] 
     {
         private static readonly string[] Summaries = new[]
         {
@@ -23,7 +23,7 @@ namespace API.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet] //This is the controller endpoint
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();

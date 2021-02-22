@@ -11,13 +11,13 @@ namespace API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main(string[] args) // this method is run when i type "dotnet run" in the CLI
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();  //calls the method below
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args) =>  
+            Host.CreateDefaultBuilder(args) //initialises the HostBuilder
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

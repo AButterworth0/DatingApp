@@ -26,7 +26,7 @@ namespace API
     {
         private readonly IConfiguration _config;
 
-        public Startup(IConfiguration config)
+        public Startup(IConfiguration config) // the configuration is being injected into the startup class
         {
             _config = config;
 
@@ -42,7 +42,7 @@ namespace API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
-            services.AddCors();
+            services.AddCors(); // Allows the client on localhost:4200 to access resourses from the API
             services.AddIdentityServices(_config); 
         }
 
@@ -60,7 +60,7 @@ namespace API
 
             app.UseRouting();
 
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200")); // Allows the client on localhost:4200 to access resourses from the API
 
             app.UseAuthentication();
 

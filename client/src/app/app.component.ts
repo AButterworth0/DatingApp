@@ -5,8 +5,8 @@ import { AccountService } from './_services/account.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html', //this html file is the view for this component
+  styleUrls: ['./app.component.css'] //this css file is the style sheet for the view
 })
 export class AppComponent implements OnInit{
   title = 'The Dating App';

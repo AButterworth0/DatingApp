@@ -54,7 +54,7 @@ namespace API.Controllers
 
             if (user == null) return Unauthorized("Invalid username");
 
-            using var hmac = new HMACSHA512(user.PasswordSalt);
+            using var hmac = new HMACSHA512(user.PasswordSalt); // this hashes the password salt to find the same computed hash used for the password
 
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
 
@@ -69,7 +69,7 @@ namespace API.Controllers
                 Token = _tokenService.CreateToken(user)
             };
         }
-        private async Task<bool> UserExists(string username)
+        private async Task<bool> UserExists(string username) // this method checks to see if there is already a user in the database with an identical username to the one being registered
         {
             return await _context.Users.AnyAsync(x => x.UserName == username.ToLower());
         }
