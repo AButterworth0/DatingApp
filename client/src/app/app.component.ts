@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 import { BusyService } from './_services/busy.service';
+import { PresenceService } from './_services/presence.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit{
   title = 'The Dating App';
   users: any;
 
-  constructor(private accountService: AccountService, private spinner: NgxSpinnerService) {}
+  constructor(private accountService: AccountService,private presence: PresenceService ,private spinner: NgxSpinnerService) {}
 
   ngOnInit() {
    this.setCurrentUser();
@@ -22,7 +23,10 @@ export class AppComponent implements OnInit{
 
   setCurrentUser(){
     const user: User = JSON.parse(localStorage.getItem('user'));
-    this.accountService.setCurrentUser(user);
+    if (user) {
+      this.accountService.setCurrentUser(user);
+      this.presence.createHubConnection(user);
+    }
   }
 
 }
